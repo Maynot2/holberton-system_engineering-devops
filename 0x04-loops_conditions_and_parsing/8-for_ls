@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Prints "Holberton School" 10 times to stdout
+
+for file_name in * 
+do
+	echo $file_name | cut -d '-' -f2
+done
