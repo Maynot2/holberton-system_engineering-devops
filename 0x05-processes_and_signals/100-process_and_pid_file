@@ -7,7 +7,7 @@ while :
 do
 	echo "To infinity and beyond"
 	sleep 2
-	trap "echo 'I hate the kill command'" SIGTERM
-	trap "echo 'Y U no love me?!'" SIGINT
-	trap "pkill -9 -f 100-process_and_pid_file; rm -rf /var/run/holbertonscript.pid" SIGQUIT SIGTERM
+	trap "echo 'Y U no love me?!' && echo 'something else'" SIGINT
+	trap "sudo rm -rf /var/run/holbertonscript.pid; pkill -9 -f 100-process_and_pid_file" SIGQUIT
+	trap "echo 'I hate the kill command'; sudo rm -rf /var/run/holbertonscript.pid; pkill -9 -f 100-process_and_pid_file" SIGTERM
 done
