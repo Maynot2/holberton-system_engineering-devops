@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Prints 'To infinity and beyond' forever
 
 while :
 do
