@@ -3,23 +3,23 @@
 #include <stdlib.h>
 
 /**
-  * infinite_while - Runs forever
-  * Return: Nothing
-  */
+ * infinite_while - Runs forever
+ * Return: Nothing
+ */
 
 int infinite_while(void)
 {
-    while (1)
-    {
-        sleep(1);
-    }
-    return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
 
 /**
-  * main - Where the program starts
-  * Return: Always 0
-  */
+ * main - Where the program starts
+ * Return: Always 0
+ */
 
 int main(void)
 {
