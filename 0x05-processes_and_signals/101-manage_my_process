@@ -10,7 +10,7 @@ fi
 if [ "start" = "$1" ]
 then
 	./manage_my_process &
-	sudo echo "$!" > /var/run/my_process.pid
+	echo "$!" > /var/run/my_process.pid
 	echo "manage_my_process started"
 fi
 
