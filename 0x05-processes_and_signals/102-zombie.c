@@ -23,30 +23,17 @@ int infinite_while(void)
 
 int main(void)
 {
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
-	if (fork() == 0)
-		printf("Zombie process created, PID: %d\n", getpid());
-	else
-		exit(0);
+	int i;
+	int child_PID;
+
+	for (i = 0; i < 5; i++)
+	{
+		child_PID = fork();
+		if (child_PID > 0)
+			printf("Zombie process created, PID: %d\n", child_PID);
+		else
+			exit(0);
+	}
 
 	infinite_while();
 
