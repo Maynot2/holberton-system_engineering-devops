@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Manages daemons
+
+if [ "start" != "$1" ] && [ "stop" != "$1" ] && [ "restart" != "$1" ]
+then
+	echo "Usage: manage_my_process {start|stop|restart}"
+	exit
+fi
+
+if [ "start" = "$1" ]
+then
+	./manage_my_process &
+	sudo echo "$!" > /var/run/my_process.pid
+	echo "manage_my_process started"
+fi
+
+if [ "stop" = "$1" ]
+then
+	pkill -f "./manage_my_process"
+	sudo rm -f /var/run/my_process.pid
+	echo "manage_my_process stopped"
+fi
+
+if [ "restart" = "$1" ]
+then
+	pkill -f "./manage_my_process"
+	sudo rm -f /var/run/my_process.pid
+	./manage_my_process &
+	echo "$!" > /var/run/my_process.pid
+	echo "manage_my_process restarted"
+fi
