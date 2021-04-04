@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Adds a default 404 page
 
 apt-get -y update
 apt-get -y install nginx
