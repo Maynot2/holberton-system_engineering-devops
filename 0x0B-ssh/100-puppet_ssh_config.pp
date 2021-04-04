@@ -1,18 +1,19 @@
 # Create custom config file
 
-file { '/etc/ssh/ssh_config':
-  ensure  => present,
-  path    => '/etc/ssh/ssh_config',
-  mode    => '0644',
-  owner   => 'root',
-  group   => 'root'
-  content => '
-    dentityFile ~/.ssh/holberton
-    IdentitiesOnly yes
-    PasswordAuthentication no
-    SendEnv LANG LC_*
-    HashKnownHosts yes
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials no
-ServerAliveInterval 120'
+file_line {'disable password authentification':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => 'PasswordAuthentication no'
+}
+
+file_line { 'Change default path to private key':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentityFile ~/.ssh/holberton'
+}
+
+file_line { 'Change default path to private key':
+  ensure => present,
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentitiesOnly yes'
 }
