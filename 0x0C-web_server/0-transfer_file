@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # $1 -> PATH_TO_FILE
 # $2 -> IP
 # $3 -> USERNAME
