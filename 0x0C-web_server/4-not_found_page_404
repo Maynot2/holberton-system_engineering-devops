@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Adds a default 404 page
 
-apt-get -y update
+apt -y update
 apt-get -y install nginx
 
 echo "Holberton School" > /var/www/html/index.html
@@ -17,7 +17,7 @@ then
 	sed -i "s|$old|$redirect|" /etc/nginx/sites-enabled/default
 fi
 
-error=$(grep "error_page 404 = /404.html;" /etc/nginx/sites-enabled/default)
+error=$(grep "error_page 404 /404.html;" /etc/nginx/sites-enabled/default)
 if [ -z "$error" ]
 then
 	echo "error_page 404 /404.html;" >> /etc/nginx/sites-enabled/default
