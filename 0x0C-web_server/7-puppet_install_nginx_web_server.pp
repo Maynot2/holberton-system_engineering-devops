@@ -14,26 +14,13 @@ file { '/var/www/html/index.html':
   content => 'Holberton School for the win!'
 }
 
-$default_config = "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        location / {
-                try_files $uri $uri/ =404;
-        }
-}
-"
-
 file { '/etc/nginx/sites-available/default':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default'
-  mode    => '0644',
-  owner   => 'root',
-  group   => 'root',
-  content => "$default_config"
+    ensure  => present,
+    path    => '/etc/nginx/sites-available/default'
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
+    content => 'server{listen 80 default_server;listen [::]:80 default_server;root /var/www/html;rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;index index.html index.htm index.nginx-debian.html;server_name _;location / {try_files $uri $uri/ =404;}}'
 }
 
 service { 'nginx':
