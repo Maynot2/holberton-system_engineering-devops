@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install nginx and add default index.html
 
-get -y update
-apt-get -y install nginx
+sudo get -y update
+sudo apt-get -y install nginx
 echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
-service nginx restart
+sudo service nginx restart
