@@ -6,10 +6,10 @@ apt-get -y install nginx
 
 echo Holberton School > /var/www/html/index.html
 
-directive=$(grep "rewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default)
+directive=$(grep "rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-enabled/default)
 if [ -z "$directive" ]
 then
-	directive="rewrite ^/redirect_me/(.*)$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+	directive="rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
 	old="root /var/www/html;"
 	redirect="$old\n\n\t$directive"
 	sed -i "s|$old|$redirect|" /etc/nginx/sites-enabled/default
