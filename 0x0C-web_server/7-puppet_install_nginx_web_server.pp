@@ -14,7 +14,7 @@ file { '/var/www/html/index.html':
   content => 'Holberton School for the win!'
 }
 
-file_line { 'nyan cat rewrite rule':
+file_line { 'redirect_me':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server;',
