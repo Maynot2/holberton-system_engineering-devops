@@ -5,11 +5,6 @@ package { 'nginx':
   provider => 'apt'
 }
 
-package { 'puppet-module-puppetlabs-stdlib':
-  ensure   => installed,
-  provider => 'apt'
-}
-
 file { '/var/www/html/index.html':
   ensure  => present,
   path    => '/var/www/html/index.html',
@@ -29,4 +24,5 @@ file_line { 'nyan cat rewrite rule':
 service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
+  subscribe  => File_line['redirect_me']
 }
