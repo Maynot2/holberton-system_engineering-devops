@@ -22,7 +22,7 @@ then
 fi
 
 header=$(grep "add_header X-Served-By \$hostname;" /etc/nginx/sites-enabled/default)
-if [ -z "$directive" ]
+if [ -z "$header" ]
 then
 	header="add_header X-Served-By \$hostname;"
 	match="location / {"
