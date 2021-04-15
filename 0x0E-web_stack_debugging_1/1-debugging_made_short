@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Fix server not listening on port 80 with a twist
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
+echo "" > /run/nginx.pid
