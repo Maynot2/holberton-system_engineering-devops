@@ -1,14 +1,12 @@
 global
-	log /dev/log	local0
-	log /dev/log	local1 notice
+	log /dev/log    local0
+	log /dev/log    local1 notice
 	chroot /var/lib/haproxy
 	stats socket /run/haproxy/admin.sock mode 660 level admin
 	stats timeout 30s
 	user haproxy
 	group haproxy
 	daemon
-	maxconn 2048
-	tune.ssl.default-dh-param 2048
 
 	# Default SSL material locations
 	ca-base /etc/ssl/certs
@@ -21,13 +19,13 @@ global
 	ssl-default-bind-options no-sslv3
 
 defaults
-	log	global
-	mode	http
-	option	httplog
-	option	dontlognull
-        timeout connect 5000
-        timeout client  50000
-        timeout server  50000
+	log global
+	mode    http
+	option  httplog
+	option  dontlognull
+	timeout connect 5000
+	timeout client  50000
+	timeout server  50000
 	errorfile 400 /etc/haproxy/errors/400.http
 	errorfile 403 /etc/haproxy/errors/403.http
 	errorfile 408 /etc/haproxy/errors/408.http
@@ -36,24 +34,15 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend www-http
-	redirect scheme https if !{ ssl_fc }
-        bind *:80
-        option forwardfor
-        default_backend webservers
-
-frontend www-https
+frontend http
+	bind *:80
 	bind *:443 ssl crt /etc/haproxy/certs/www.realpolo.tech.pem
-	reqadd X-Forwarded-Proto:\ https
-	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-	use_backend letsencrypt-backend if letsencrypt-acl
-	default_backend webservers
+	http-request redirect scheme https code 301 unless { ssl_fc }
+	mode http
+	default_backend web-backend
 
-backend webservers
+backend web-backend
+	mode http
 	balance roundrobin
-	server  2527-web-01 35.231.129.240:80 check
-	server  2527-web-02 35.196.6.217:80 check
-	option httpchk
-
-backend letsencrypt-backend
-   server letsencrypt 127.0.0.1:54321
+	server 2533-web-01 34.75.49.246:80 check
+	server 2533-web-02 104.196.144.160:80 check
