@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Change user passed as argument
+if [ -z "$1" ]
+then
+	whoami
+else
+	sudo -u "$1" /usr/bin/whoami
+fi
