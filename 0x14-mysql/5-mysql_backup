@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # backup db and compress it
-sudo /usr/bin/mysqldump -p $1 --all-databases > backup.sql
+mysqldump -u root -p $1 --all-databases > backup.sql
 today=$(date +"%d-%m-%Y")
 tar -cf "$today.tar.gz" backup.sql
