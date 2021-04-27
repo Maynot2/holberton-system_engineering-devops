@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Starts nginx with a different user
+pkill apache2
 chmod u+r /etc/nginx/nginx.conf
 chown nginx /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 sudo -u nginx /etc/init.d/nginx restart
