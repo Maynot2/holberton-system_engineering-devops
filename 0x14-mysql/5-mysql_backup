@@ -2,4 +2,4 @@
 # backup db and compress it
 mysqldump -u root -p $1 --all-databases > backup.sql
 today=$(date +"%d-%m-%Y")
-tar -cf "$today.tar.gz" backup.sql
+tar -cfz "$today.tar.gz" backup.sql
