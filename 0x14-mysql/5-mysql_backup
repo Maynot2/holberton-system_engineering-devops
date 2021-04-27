@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # backup db and compress it
-mysqldump -uroot -p"$1" --all-databases > backup.sql
-tar -cfz "$(date +"%d-%m-%Y").tar.gz" backup.sql
+mysqldump -u root -p"$1" --all-databases > backup.sql
+tar -czf "$(date +%d-%m-%Y).tar.gz" backup.sql
