@@ -3,9 +3,9 @@
     Fetches data from jsonplaceholder API
 """
 
-from sys import argv
-from json import load
 import requests
+from json import load
+from sys import argv
 
 
 if __name__ == "__main__":

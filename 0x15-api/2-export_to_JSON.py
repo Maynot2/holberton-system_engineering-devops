@@ -3,9 +3,9 @@
     Fetches data from jsonplaceholder API
 """
 
-from sys import argv
 import json
 import requests
+from sys import argv
 
 
 def format_todos(todos, name):
