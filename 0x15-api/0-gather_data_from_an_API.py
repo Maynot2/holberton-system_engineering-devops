@@ -3,8 +3,8 @@
     Fetches data from jsonplaceholder API
 """
 
-import requests
 from json import load
+import requests
 from sys import argv
 
 
