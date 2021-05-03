@@ -9,11 +9,13 @@ from sys import argv
 
 
 def format_todos(todos, name):
+    """Format todo list according to print requierements"""
     for todo in todos:
         todo['task'] = todo.pop('title')
         todo.pop("userId")
         todo.pop("id")
         todo['username'] = name
+
 
 if __name__ == "__main__":
     if len(argv) == 2:
