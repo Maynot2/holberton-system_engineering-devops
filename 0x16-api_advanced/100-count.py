@@ -48,4 +48,4 @@ def count_words(subreddit, word_list):
         sorted_list = sorted(w_d.items(), key=lambda x: x[1], reverse=True)
         for word, count in sorted_list:
             if count > 0:
-                print('{}: {}'.format(word, count))
+                print('{} : {}'.format(word, count))
