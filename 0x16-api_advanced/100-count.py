@@ -43,8 +43,9 @@ def count_words(subreddit, word_list):
     word_dict = {}
     for word in word_list:
         word_dict[word] = 0
-    word_dict = count_words_rec(subreddit, word_dict)
-    sorted_list = sorted(word_dict.items(), key=lambda x: x[1], reverse=True)
-    for word, count in sorted_list:
-        if count > 0:
-            print('{}: {}'.format(word, count))
+    w_d = count_words_rec(subreddit, word_dict)
+    if w_d:
+        sorted_list = sorted(w_d.items(), key=lambda x: x[1], reverse=True)
+        for word, count in sorted_list:
+            if count > 0:
+                print('{}: {}'.format(word, count))
