@@ -12,7 +12,7 @@ def count_same_word(text, word):
     count = 0
     words = text.strip().split(" ")
     for w in words:
-        if w.lower() == word.lower():
+        if w.lower() == word:
             count += 1
     return count
 
@@ -41,12 +41,13 @@ def count_words_rec(subreddit, word_list, word_dict, hot_list=[], after=None):
 
 def count_words(subreddit, word_list):
     """Wrapper function for recursive call"""
-    word_dict = {}
-    for word in word_list:
-        word_dict[word] = 0
-    w_d = count_words_rec(subreddit, word_list, word_dict)
-    if w_d:
-        sorted_list = sorted(w_d.items(), key=lambda x: x[1], reverse=True)
+    word_l = [word.lower() for word in word_list]
+    word_d = {word: 0 for word in word_l}
+
+    word_d = count_words_rec(subreddit, word_l, word_d)
+
+    if word_d:
+        sorted_list = sorted(word_d.items(), key=lambda x: x[1], reverse=True)
         for word, count in sorted_list:
             if count > 0:
                 print('{}: {}'.format(word, count))
